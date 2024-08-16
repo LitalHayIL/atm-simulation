@@ -1,10 +1,5 @@
 import datetime
-
-# Initialize account data
-accounts = {
-    'user1': {'pin': '1234', 'balance': 1000, 'history': []},
-    'user2': {'pin': '5678', 'balance': 2000, 'history': []}
-}
+from account_data import accounts  # Import the accounts dictionary
 
 def print_transaction_history(account):
     print("\nTransaction History:")
