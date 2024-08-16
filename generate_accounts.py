@@ -15,6 +15,6 @@ for i in range(1, 31):
     balance = generate_random_balance()
     accounts[user_id] = {'pin': pin, 'balance': balance, 'history': []}
 
-# Save to account_data.py
-with open('account_data.py', 'w') as f:
-    f.write('accounts = ' + json.dumps(accounts, indent=4))
+# Save to account_data.json
+with open('account_data.json', 'w') as f:
+    json.dump(accounts, f, indent=4)
