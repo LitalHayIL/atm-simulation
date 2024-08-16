@@ -1,6 +1,6 @@
 ### README
 
-```markdown
+
 # Advanced ATM Simulator
 
 ## Overview
@@ -21,7 +21,7 @@ This Python program simulates an ATM with advanced features. Users can:
 ## Requirements
 
 - Python 3.x
-```
+
 ## Usage
 
 1. **Run the Program:**
