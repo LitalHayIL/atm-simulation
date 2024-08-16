@@ -22,6 +22,29 @@ This Python program simulates an ATM with advanced features. Users can:
 
 - Python 3.x
 
+## Generate dummy account data
+#Run the Script
+Save the above code to a file, say generate_accounts.py, and run it with:
+
+ ```bash
+python generate_accounts.py
+ ```
+This will create an account_data.py file with 30 different accounts.
+
+Resulting account_data.py
+The account_data.py file will look something like this:
+
+ ```bash
+accounts = {
+    "user1": {"pin": "1234", "balance": 2567, "history": []},
+    "user2": {"pin": "5678", "balance": 4380, "history": []},
+    "user3": {"pin": "9101", "balance": 2123, "history": []},
+    # Add 27 more accounts here...
+    "user30": {"pin": "6789", "balance": 4790, "history": []}
+}
+ ```
+Each account will have a unique user_id, a randomly generated pin, and a randomly assigned balance between 500 and 5000. You can adjust the balance range or the number of accounts as needed.
+
 ## Usage
 
 1. **Run the Program:**
