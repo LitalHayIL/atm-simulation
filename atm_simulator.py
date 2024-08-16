@@ -1,5 +1,24 @@
 import datetime
-from account_data import accounts  # Import the accounts dictionary
+import json
+import os
+
+# File to store account data
+ACCOUNT_FILE = 'account_data.json'
+
+def load_accounts():
+    if os.path.exists(ACCOUNT_FILE):
+        with open(ACCOUNT_FILE, 'r') as f:
+            return json.load(f)
+    else:
+        # Initialize accounts if the file does not exist
+        return {
+            f'user{i}': {'pin': f'{1000 + i}', 'balance': 1000 + i * 100, 'history': []}
+            for i in range(1, 31)
+        }
+
+def save_accounts(accounts):
+    with open(ACCOUNT_FILE, 'w') as f:
+        json.dump(accounts, f, indent=4)
 
 def print_transaction_history(account):
     print("\nTransaction History:")
@@ -23,7 +42,10 @@ def atm_menu():
 def main():
     print("Welcome to the Advanced ATM Simulator")
 
-    user_id = input("Enter your user ID (user1/user2): ").strip()
+    # Load account data
+    accounts = load_accounts()
+
+    user_id = input("Enter your user ID (user1/user2/.../user30): ").strip()
     if user_id not in accounts:
         print("Invalid user ID.")
         return
@@ -59,6 +81,7 @@ def main():
                     update_transaction_history(accounts[user_id], "Withdraw", withdraw_amount)
                     print(f"Successfully withdrew ${withdraw_amount}.")
                     print(f"Your new balance is ${accounts[user_id]['balance']}\n")
+                    save_accounts(accounts)  # Save the updated data
             except ValueError:
                 print("Invalid amount. Please enter a number.")
 
@@ -73,6 +96,7 @@ def main():
                     update_transaction_history(accounts[user_id], "Deposit", deposit_amount)
                     print(f"Successfully deposited ${deposit_amount}.")
                     print(f"Your new balance is ${accounts[user_id]['balance']}\n")
+                    save_accounts(accounts)  # Save the updated data
             except ValueError:
                 print("Invalid amount. Please enter a number.")
 
